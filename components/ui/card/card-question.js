@@ -1,5 +1,5 @@
-import { ButtonQuestion } from "../button";
 import { useState } from "react";
+import { ButtonQuestion } from "../button/button-question";
 
 export const CardQuestion = ({ title, listAnswer }) => {
   const [selected, setSelected] = useState(null);

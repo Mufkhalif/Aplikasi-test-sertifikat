@@ -1,12 +1,12 @@
 import { BottomSheet } from "react-spring-bottom-sheet";
 import "react-spring-bottom-sheet/dist/style.css";
-import { ButtonPrimary } from "../button/button";
+import { ButtonPrimary } from "../button/button-primary";
 
 export const BottomSheetDone = ({ active, onDismiss, onConfirm }) => (
   <BottomSheet
     onDismiss={onDismiss}
     open={active}
-    className="text-center py-6 px-4"
+    className="text-center py-6 px-4 w-full sm:max-w-xl"
   >
     <div className="px-8">
       <div className="h-12" />
