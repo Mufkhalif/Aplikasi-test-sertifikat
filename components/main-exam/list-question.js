@@ -1,23 +1,22 @@
 import { CardQuestion } from "../ui/card/card-question";
-import { listTest } from "data/list_test";
 import { InfoExam } from "./info-exam";
 import { ProgressBar } from "../ui/progress-bar/progress-bar";
 import { useState } from "react";
 import { BottomSheetDone } from "../ui/modal/bottom-sheet";
 import { ButtonPrimary } from "../ui/button/button-primary";
 
-export const ListQuestion = () => {
+export const ListQuestion = ({ listQuestion = [] }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="mb-11">
       <InfoExam />
       <ProgressBar />
-      {listTest.map((item, key) => (
+      {listQuestion.map((item, key) => (
         <CardQuestion
           {...{ key }}
-          title={item.title}
-          listAnswer={item.listAnswer}
+          title={`${key + 1}. ${item.question}`}
+          listAnswer={item.list_answer.list_answer}
         />
       ))}
       <ButtonPrimary title="Selesai" onClick={() => setOpen(true)} />

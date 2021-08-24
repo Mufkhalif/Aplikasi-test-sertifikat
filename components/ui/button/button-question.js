@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 export const ButtonQuestion = ({ title, isSelected, keyItem, onClick }) => (
   <button
-    onClick={() => onClick()}
+    {...{ onClick }}
     className={clsx(
       "w-full rounded-lg p-2 border  flex flex-row items-center mb-2 transition delay-150 justify-between",
       isSelected
@@ -21,7 +21,9 @@ export const ButtonQuestion = ({ title, isSelected, keyItem, onClick }) => (
       >
         <h2 className={clsx(isSelected ? "text-white" : "")}>{keyItem}</h2>
       </div>
-      <h2 className="font-bold text-xs text-primaryDark ml-1 ">{title}</h2>
+      <h2 className="font-bold text-xs text-primaryDark ml-1 uppercase ">
+        {title}
+      </h2>
     </div>
     {isSelected && <CheckIcon />}
   </button>

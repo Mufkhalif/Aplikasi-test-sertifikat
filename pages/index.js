@@ -4,14 +4,14 @@ import { Header } from "@/components/ui/header/header";
 import { ListTest } from "@/components/home/list-test";
 import { Content } from "@/components/ui/content";
 
-export default function Home() {
-  return (
-    <Container>
-      <Seo />
-      <Header />
-      <Content className="pt-24">
-        <ListTest />
-      </Content>
-    </Container>
-  );
-}
+const Home = () => (
+  <Container>
+    <Seo />
+    <Header />
+    <Content className="pt-24">
+      <ListTest />
+    </Content>
+  </Container>
+);
+
+export default Home;

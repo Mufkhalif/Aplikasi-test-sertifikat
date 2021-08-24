@@ -12,11 +12,11 @@ export const CardQuestion = ({ title, listAnswer }) => {
       <div className="mt-8">
         {listAnswer.map((item, key) => (
           <ButtonQuestion
-            isSelected={selected == item.key}
-            title={item.title}
-            keyItem={item.key}
+            isSelected={selected == item.id}
+            title={item.label}
+            keyItem={item.id}
             {...{ key }}
-            onClick={() => setSelected(item.key)}
+            onClick={() => setSelected(item.id)}
           />
         ))}
       </div>

@@ -25,8 +25,6 @@ const Post = ({ post }) => {
 export async function getStaticPaths() {
   const { data, error } = await supabase.from("posts").select("id");
 
-  console.log({ error });
-
   const paths = data.map((post) => ({
     params: { id: JSON.stringify(post.id) },
   }));
