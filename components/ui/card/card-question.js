@@ -3,8 +3,9 @@ import { ButtonQuestion } from "../button/button-question";
 
 export const CardQuestion = ({ title, listAnswer }) => {
   const [selected, setSelected] = useState(null);
+
   return (
-    <div className="bg-white p-4 rounded-lg flex flex-col pb-6 mb-6 hover:bg-white hover:shadow-lg cursor-pointer">
+    <div className="bg-white p-4 rounded-lg flex flex-col pb-6 mb-6 hover:bg-white hover:shadow-lg ">
       <h2 className="font-normal text-primaryDark text-sm leading-6">
         {title}
       </h2>
