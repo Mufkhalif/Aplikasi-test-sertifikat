@@ -29,7 +29,7 @@ export const ButtonQuestion = ({ title, isSelected, keyItem, onClick }) => (
   </button>
 );
 
-const CheckIcon = () => (
+export const CheckIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-5 w-5 fill-current text-primaryGreen"

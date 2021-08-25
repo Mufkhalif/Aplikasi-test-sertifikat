@@ -17,3 +17,7 @@ export const shuffle = (array) => {
 
   return array;
 };
+
+export function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}

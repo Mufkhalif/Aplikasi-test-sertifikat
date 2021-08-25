@@ -8,6 +8,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.4",
+    "@hookform/resolvers": "^2.8.0",
     "@supabase/supabase-js": "^1.22.2",
     "@supabase/ui": "^0.28.0",
     "clsx": "^1.1.1",
@@ -16,10 +17,13 @@
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.13.0",
     "react-markdown": "^7.0.0",
     "react-simplemde-editor": "^5.0.1",
     "react-spring-bottom-sheet": "^3.4.0",
-    "uuid": "^8.3.2"
+    "react-use": "^17.2.4",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",

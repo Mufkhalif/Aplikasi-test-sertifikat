@@ -7,13 +7,13 @@ import NextNProgress from "@/components/ui/progress-bar-routing";
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
 
+  console.log(user);
+
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(async () =>
       checkUser()
     );
-
     checkUser();
-
     return () => {
       authListener?.unsubscribe();
     };
@@ -26,19 +26,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div>
-      {/* <nav className="p-6 border-b border-gray-300">
-        <Link href="/">
-          <span className="mr-6 cursor-pointer">Home</span>
-        </Link>
-        {user && (
-          <Link href="/create-post">
-            <span className="mr-6 cursor-pointer">Create Post</span>
-          </Link>
-        )}
-        <Link href="/profile">
-          <span className="mr-6 cursor-pointer">Profile</span>
-        </Link>
-      </nav> */}
       <NextNProgress />
       <Component {...pageProps} />
     </div>

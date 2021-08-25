@@ -1,28 +1,17 @@
 import { CardHome } from "../ui/card/card-home";
-import { useEffect, useState } from "react";
-import { supabase } from "utils/api";
 import { Sekeleton } from "../ui/loading/skeleton";
+import { useSupabase } from "utils/hooks/use-supabase";
+import { Fragment } from "react";
 
 export const ListTest = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    getList();
-  }, []);
-
-  const getList = async () => {
-    const { data } = await supabase.from("room_question").select();
-    setData(data);
-    setLoading(false);
-  };
+  const { data, loading } = useSupabase("room_question");
 
   return (
-    <>
+    <Fragment>
       {loading || data.length == 0 ? (
         <Sekeleton />
       ) : (
-        <>
+        <Fragment>
           {data.map((item) => (
             <CardHome
               key={item.id}
@@ -32,17 +21,8 @@ export const ListTest = () => {
               type={item.type}
             />
           ))}
-          {data.map((item) => (
-            <CardHome
-              key={item.id}
-              id={item.id}
-              title={item.name}
-              subTitle={item.description}
-              type={item.type}
-            />
-          ))}
-        </>
+        </Fragment>
       )}
-    </>
+    </Fragment>
   );
 };
