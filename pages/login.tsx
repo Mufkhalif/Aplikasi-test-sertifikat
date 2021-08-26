@@ -36,9 +36,9 @@ const Login = () => {
   let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
 
   return (
-    <Container isBottom={false} className="bg-white">
+    <Container isBottom={false} className="bg-white ">
       <Seo title="Login" />
-      <Content className="pt-8 bg-white">
+      <Content className="pt-8 bg-white h-screen">
         <SectionHeader />
         <Tab.Group
           onChange={() => {

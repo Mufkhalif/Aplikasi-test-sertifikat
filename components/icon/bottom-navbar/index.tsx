@@ -2,13 +2,14 @@ import clsx from "clsx";
 
 const onActiveIcon = (isActive = false) => {
   return clsx(
-    "h-6 w-6 transition",
+    "h-5 w-5 transition",
     isActive ? "fill-current text-primaryBlue" : "fill-current text-subDark"
   );
 };
 
 interface IconProps {
   isActive?: boolean;
+  className?: string;
 }
 
 export const BookmarkIcon = ({ isActive }: IconProps) => (
@@ -33,10 +34,10 @@ export const HomeIcon = ({ isActive }: IconProps) => (
   </svg>
 );
 
-export const UserIcon = ({ isActive }: IconProps) => (
+export const UserIcon = ({ isActive, className }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className={onActiveIcon(isActive)}
+    className={clsx(onActiveIcon(isActive), className)}
     viewBox="0 0 20 20"
     fill="currentColor"
   >

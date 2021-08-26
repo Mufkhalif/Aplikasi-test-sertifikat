@@ -1,5 +1,10 @@
 /* override nprogress.css */
 /* Make clicks pass-through */
+
+body {
+  background-color: #f8f8f8;
+}
+
 #nprogress {
   pointer-events: none;
 }

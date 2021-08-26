@@ -11,6 +11,7 @@ export interface BottomItems {
   iconActive: React.ReactNode;
   iconDefault: React.ReactNode;
   title: string;
+  href: string;
 }
 
 export const bottomItems: BottomItems[] = [
@@ -19,23 +20,27 @@ export const bottomItems: BottomItems[] = [
     iconActive: <HomeIcon isActive />,
     iconDefault: <HomeIcon />,
     title: "Beranda",
+    href: "/",
   },
   {
     id: 2,
     iconActive: <CalendarIcon isActive />,
     iconDefault: <CalendarIcon />,
     title: "Acara",
+    href: "/acara",
   },
   {
     id: 3,
     iconActive: <BookmarkIcon isActive />,
     iconDefault: <BookmarkIcon />,
     title: "Bookmark",
+    href: "/bookmark",
   },
   {
     id: 4,
     iconActive: <UserIcon isActive />,
     iconDefault: <UserIcon />,
     title: "Profile",
+    href: "/account",
   },
 ];

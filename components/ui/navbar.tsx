@@ -1,6 +1,6 @@
-import { useState } from "react";
 import clsx from "clsx";
 import { bottomItems, BottomItems } from "data/list_bottom_navigation";
+import { useRouter } from "next/router";
 
 interface NavbarItemProps {
   isActive: boolean;
@@ -31,16 +31,19 @@ const NavbarItem = ({ isActive, Icon, title, onClick }: NavbarItemProps) => (
 );
 
 export const Navbar: React.FC = () => {
-  const [active, setActive] = useState(1);
+  const router = useRouter();
+
   return (
-    <div className="flex flex-row fixed bottom-0 bg-white w-full sm:max-w-xl py-1 shadow-lg px-4 justify-around">
+    <div className="flex flex-row fixed bottom-0 bg-white w-full sm:max-w-xl py-1 shadow-top px-4 justify-around">
       {bottomItems.map((item: BottomItems) => (
         <NavbarItem
           key={item.id}
-          onClick={() => setActive(item.id)}
+          onClick={() => router.push(item.href)}
           title={item.title}
-          isActive={item.id == active}
-          Icon={item.id == active ? item.iconActive : item.iconDefault}
+          isActive={item.href === router.asPath}
+          Icon={
+            item.href === router.asPath ? item.iconActive : item.iconDefault
+          }
         />
       ))}
     </div>

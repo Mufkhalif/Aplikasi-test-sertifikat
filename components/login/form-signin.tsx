@@ -2,9 +2,12 @@ import { TextField } from "@/components/ui/form/text-field";
 import { ReminderRow } from "./reminder-row";
 import { ButtonPrimary } from "../ui/button";
 import { useForm } from "react-hook-form";
-import React, { useEffect } from "react";
+import React from "react";
 import { supabase } from "utils/api";
 import { formOptionsSignin } from "./helper/validation-schema";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const ErrorText = ({ message }) => (
   <span className="text-sm text-red-500 mt-2">{message}</span>
@@ -17,20 +20,9 @@ export const FormSignin = () => {
     getValues,
     formState: { errors },
   } = useForm(formOptionsSignin);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchProfile();
-  }, []);
-
-  async function fetchProfile() {
-    const profileData = await supabase.auth.user();
-    // console.log("profileData: ", profileData);
-    // if (!profileData) {
-    //   router.push('/sign-in')
-    // } else {
-    //   setProfile(profileData)
-    // }
-  }
+  const router = useRouter();
 
   const isValid = (name) => {
     return (
@@ -41,12 +33,27 @@ export const FormSignin = () => {
   };
 
   const onSubmit = async (data) => {
-    let { user } = await supabase.auth.signIn({
+    setLoading(true);
+
+    let { user, error } = await supabase.auth.signIn({
       email: data.email,
       password: data.password,
     });
 
-    console.log({ login: user });
+    if (user != null) {
+      toast.success("Proses login berhasil", {
+        position: toast.POSITION.BOTTOM_CENTER,
+        hideProgressBar: true,
+      });
+      setLoading(false);
+      router.push("/");
+    } else {
+      toast.error(error.message, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        hideProgressBar: true,
+      });
+      setLoading(false);
+    }
   };
 
   return (
@@ -74,7 +81,7 @@ export const FormSignin = () => {
         />
       </div>
       <ReminderRow />
-      <ButtonPrimary type="submit" title="Masuk" onClick={() => null} />
+      <ButtonPrimary disabled={loading} type="submit" title="Masuk" />
     </form>
   );
 };

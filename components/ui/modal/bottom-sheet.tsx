@@ -16,7 +16,7 @@ export const BottomSheetDone = ({
   <BottomSheet
     onDismiss={onDismiss}
     open={active}
-    className="text-center py-6 px-4 w-full sm:max-w-xl"
+    className="text-center py-6 px-4 sm:max-w-xl w-3/6"
   >
     <div className="px-8">
       <div className="h-12" />

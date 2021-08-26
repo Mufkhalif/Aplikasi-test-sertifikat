@@ -31,6 +31,7 @@ module.exports = {
       inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
       none: "none",
       primary: "8px 8px #65DC41",
+      top: "3px 5px 13px 9px rgb(0 0 0 / 6%)",
     },
   },
   variants: {
