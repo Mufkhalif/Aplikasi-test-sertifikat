@@ -2,17 +2,16 @@ import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
 import { supabase } from "../utils/api";
 import "../styles/globals.css";
+import "../styles/header.css";
 import NextNProgress from "@/components/ui/progress-bar-routing";
 import { useStore } from "store/store";
 import { Provider } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
   const store = useStore(pageProps.initialReduxState);
-
-  // console.log({ user });
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(async () =>

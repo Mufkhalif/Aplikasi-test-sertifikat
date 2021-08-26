@@ -1,16 +1,16 @@
 import clsx from "clsx";
 
+interface IconProps {
+  isActive?: boolean;
+  className?: string;
+}
+
 const onActiveIcon = (isActive = false) => {
   return clsx(
     "h-5 w-5 transition",
     isActive ? "fill-current text-primaryBlue" : "fill-current text-subDark"
   );
 };
-
-interface IconProps {
-  isActive?: boolean;
-  className?: string;
-}
 
 export const BookmarkIcon = ({ isActive }: IconProps) => (
   <svg

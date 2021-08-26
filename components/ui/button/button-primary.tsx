@@ -16,12 +16,11 @@ export const ButtonPrimary = ({
   disabled = false,
 }: ButtonProps) => (
   <button
-    disabled={disabled}
     className={clsx(
       "bg-primaryBlue w-full rounded-lg p-4 shadow-primary flex flex-row justify-center items-center",
       className
     )}
-    {...{ onClick, type }}
+    {...{ onClick, type, disabled }}
   >
     {disabled ? (
       <>

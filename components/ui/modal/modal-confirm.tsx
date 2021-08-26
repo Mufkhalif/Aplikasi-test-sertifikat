@@ -1,16 +1,19 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { ListChapterTest } from "utils/hooks/use-supabase";
 
 interface ModalConfirmProps {
   isOpen: boolean;
   onDismiss: () => void;
   onConfirm: () => void;
+  selected?: ListChapterTest;
 }
 
 export const ModalConfirm = ({
   isOpen,
   onDismiss,
   onConfirm,
+  selected,
 }: ModalConfirmProps) => (
   <Transition appear show={isOpen} as={Fragment}>
     <Dialog
@@ -52,7 +55,7 @@ export const ModalConfirm = ({
             <div className="mt-2">
               <p className="text-sm text-gray-500">
                 Apa anda ingin mulai untuk melakukan test untuk soal{" "}
-                <b>Bahasa Indonesia</b> ini ?{" "}
+                <b>{selected?.name}</b> ini ?{" "}
               </p>
             </div>
 

@@ -21,10 +21,5 @@ export const HeaderExam = () => (
       </Link>
       <h2 className="text-primaryDark font-bold">Soal Test</h2>
     </div>
-    <div className="flex flex-row">
-      <div className="px-3 py-1 bg-primaryBlue rounded-full text-white text-sm">
-        <p>30.00</p>
-      </div>
-    </div>
   </div>
 );

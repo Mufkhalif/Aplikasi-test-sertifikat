@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ButtonOutlined, ButtonPrimary } from "../button";
 
 interface CardHomeProps {
@@ -9,14 +8,7 @@ interface CardHomeProps {
   onClick: () => void;
 }
 
-export const CardHome = ({
-  id,
-  type,
-  title,
-  subTitle,
-  onClick,
-}: CardHomeProps) => (
-  // <Link href={`/detail-room/${id}`}>
+export const CardHome = ({ type, title, subTitle, onClick }: CardHomeProps) => (
   <div className="bg-white p-4 rounded-lg flex flex-col pb-6 mb-6 hover:bg-white hover:shadow-lg ">
     <h2 className="font-bold text-primaryDark text-sm">{title}</h2>
     <p className="font-normal text-subDark my-6 text-xs">{subTitle}</p>
@@ -26,5 +18,4 @@ export const CardHome = ({
       <ButtonPrimary type="button" title="Mulai Test" {...{ onClick }} />
     )}
   </div>
-  // </Link>
 );

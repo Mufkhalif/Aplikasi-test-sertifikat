@@ -32,8 +32,8 @@ const Login = () => {
     Daftar: [],
   };
 
-  let [isShowing, setIsShowing] = useState(true);
-  let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
+  const [isShowing, setIsShowing] = useState(true);
+  const [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
 
   return (
     <Container isBottom={false} className="bg-white ">

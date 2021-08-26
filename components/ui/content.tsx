@@ -4,8 +4,13 @@ import React from "react";
 interface ContentProps {
   children: React.ReactNode;
   className?: string;
+  noPadding?: boolean;
 }
 
-export const Content = ({ children, className }: ContentProps) => {
-  return <div className={clsx("py-6 px-4", className)}>{children}</div>;
+export const Content = ({ children, className, noPadding }: ContentProps) => {
+  return (
+    <div className={clsx("py-6 ", className, noPadding ? "px-0" : "px-4")}>
+      {children}
+    </div>
+  );
 };

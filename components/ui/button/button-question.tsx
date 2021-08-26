@@ -7,7 +7,7 @@ export const ButtonQuestion = ({ title, isSelected, keyItem, onClick }) => (
       "w-full rounded-lg p-2 border  flex flex-row items-center mb-2 transition delay-150 justify-between",
       isSelected
         ? "border-primaryBlue bg-secondaryBlue"
-        : "border-secondaryDark bg-gray-100"
+        : "border-secondaryDark bg-[#F7F7F7]"
     )}
   >
     <div className="flex flex-row items-center">
@@ -21,9 +21,7 @@ export const ButtonQuestion = ({ title, isSelected, keyItem, onClick }) => (
       >
         <h2 className={clsx(isSelected ? "text-white" : "")}>{keyItem}</h2>
       </div>
-      <h2 className="font-bold text-xs text-primaryDark ml-1 uppercase ">
-        {title}
-      </h2>
+      <h2 className="font-bold text-xs text-primaryDark ml-1">{title}</h2>
     </div>
     {isSelected && <CheckIcon />}
   </button>

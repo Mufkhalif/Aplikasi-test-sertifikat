@@ -1,43 +1,85 @@
+import Calendar from "react-calendar";
+import React, { useState } from "react";
+import clsx from "clsx";
+import { Transition } from "@headlessui/react";
+
 export const Header = () => {
+  const [value, onChange] = useState(new Date());
+  const [openCalendar, setOpenCalendar] = useState<boolean>(false);
+
   return (
-    <div className="flex flex-row justify-between items-center py-6 px-4 bg-white fixed w-full  shadow-sm z-10 sm:max-w-xl">
-      <div>
-        <h2 className="text-primaryDark font-bold">Schedule Test</h2>
-      </div>
-      <div className="flex flex-row">
-        <CalendarIcon />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
-          className="h-5 w-5 ml-8"
-        >
-          <title>{"Search"}</title>
-          <path
-            d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-            fill="none"
-            stroke="currentColor"
-            strokeMiterlimit={10}
-            strokeWidth={32}
+    <div className="fixed w-full  shadow-sm z-10 sm:max-w-xl">
+      <div className="flex flex-row justify-between items-center py-6 px-4 bg-white ">
+        <div>
+          <h2 className="text-primaryDark text-sm font-bold">Schedule Test</h2>
+        </div>
+        <div className="flex flex-row">
+          <CalendarIcon
+            isActive={openCalendar}
+            onClick={() => setOpenCalendar(!openCalendar)}
           />
-          <path
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeMiterlimit={10}
-            strokeWidth={32}
-            d="M338.29 338.29L448 448"
-          />
-        </svg>
+          <SearchIcon />
+        </div>
       </div>
+      <Transition
+        show={openCalendar}
+        enter="transition-opacity duration-75"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <Calendar
+          value={value}
+          onChange={(e) => {
+            onChange(e);
+            setOpenCalendar(false);
+          }}
+        />
+        <div
+          className="w-full h-full absolute  z-2 sm:max-w-xl sm:max-h-xl"
+          onClick={() => setOpenCalendar(false)}
+        ></div>
+      </Transition>
     </div>
   );
 };
 
-const CalendarIcon = () => (
+export const SearchIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
     viewBox="0 0 512 512"
+    className="h-5 w-5 ml-8"
+  >
+    <title>{"Search"}</title>
+    <path
+      d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+      fill="none"
+      stroke="currentColor"
+      strokeMiterlimit={10}
+      strokeWidth={32}
+    />
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeMiterlimit={10}
+      strokeWidth={32}
+      d="M338.29 338.29L448 448"
+    />
+  </svg>
+);
+
+const CalendarIcon = ({ onClick, isActive }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className={clsx(
+      "h-5 w-5 cursor-pointer",
+      isActive && "fill-current text-primaryBlue"
+    )}
+    viewBox="0 0 512 512"
+    onClick={onClick}
   >
     <title>{"Calendar Clear"}</title>
     <rect

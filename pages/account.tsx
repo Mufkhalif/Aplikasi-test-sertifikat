@@ -18,9 +18,9 @@ const Account = () => {
   const { user, logOut, loading } = useUser();
 
   return (
-    <Container isBottom={true} className="bg-red-400">
+    <Container isBottom={true} className="bg-red-400 px-0">
       <Seo title="Account" />
-      <Content className="pt-8 bg-white px-0">
+      <Content className="pt-8 bg-white px-0" noPadding={true}>
         {user && (
           <>
             <h1 className="font-bold text-primaryDark px-4">My Account</h1>
