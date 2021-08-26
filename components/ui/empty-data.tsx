@@ -1,4 +1,4 @@
-export const EmptyData = () => (
+export const EmptyData: React.FC = () => (
   <div className="w-full h-screen text-center flex-col flex">
     <img
       className="h-48 object-scale-down w-full mt-28"

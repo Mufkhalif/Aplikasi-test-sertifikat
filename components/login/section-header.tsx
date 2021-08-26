@@ -1,6 +1,6 @@
 import { FlagIndoIcon } from "../icon/flag-indo";
 
-export const SectionHeader = () => (
+export const SectionHeader: React.FC = () => (
   <div className="flex flex-row">
     <div className="flex-1">
       <div className="flex flex-row justify-between items-center">

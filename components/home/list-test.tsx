@@ -19,6 +19,7 @@ export const ListTest = () => {
               title={item.name}
               subTitle={item.description}
               type={item.type}
+              onClick={() => null}
             />
           ))}
         </Fragment>

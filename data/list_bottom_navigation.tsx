@@ -4,8 +4,16 @@ import {
   BookmarkIcon,
   UserIcon,
 } from "@/components/icon/bottom-navbar";
+import React from "react";
 
-export const bottomItems = [
+export interface BottomItems {
+  id: number;
+  iconActive: React.ReactNode;
+  iconDefault: React.ReactNode;
+  title: string;
+}
+
+export const bottomItems: BottomItems[] = [
   {
     id: 1,
     iconActive: <HomeIcon isActive />,

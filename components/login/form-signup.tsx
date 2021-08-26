@@ -88,7 +88,12 @@ export const FormSignup = () => {
           }
         />
       </div>
-      <ButtonPrimary type="submit" title="Daftar" className="mt-4" />
+      <ButtonPrimary
+        type="submit"
+        title="Daftar"
+        className="mt-4"
+        onClick={() => null}
+      />
     </form>
   );
 };

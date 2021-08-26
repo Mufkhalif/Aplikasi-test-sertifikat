@@ -5,7 +5,7 @@ import { Content } from "@/components/ui/content";
 import ListQuestion from "@/components/main-exam/list-question";
 
 const MainExam = () => (
-  <Container>
+  <Container isBottom={false}>
     <Seo title="Main Exam" />
     <HeaderExam />
     <Content className="pt-24">

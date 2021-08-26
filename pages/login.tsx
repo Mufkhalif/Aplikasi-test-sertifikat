@@ -1,10 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { Seo } from "@/components/ui/seo";
 import { Content } from "@/components/ui/content";
-import { ButtonPrimary } from "@/components/ui/button";
 import { SectionHeader } from "@/components/login/section-header";
-import { ReminderRow } from "@/components/login/reminder-row";
-import { TextField } from "@/components/ui/form/text-field";
 import { Tab } from "@headlessui/react";
 import { classNames } from "utils";
 import { TabItem } from "@/components/login/tab-item";
@@ -50,7 +47,7 @@ const Login = () => {
           }}
         >
           <Tab.List className="flex p-1 space-x-1 bg-[#fbfbfb] rounded-xl mt-8">
-            {Object.keys(tabs).map((category) => (
+            {Object.keys(tabs).map((category: string) => (
               <TabItem key={category} category={category} />
             ))}
           </Tab.List>

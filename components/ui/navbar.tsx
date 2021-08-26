@@ -1,8 +1,15 @@
 import { useState } from "react";
 import clsx from "clsx";
-import { bottomItems } from "data/list_bottom_navigation";
+import { bottomItems, BottomItems } from "data/list_bottom_navigation";
 
-const NavbarItem = ({ isActive, Icon, title, onClick }) => (
+interface NavbarItemProps {
+  isActive: boolean;
+  Icon: React.ReactNode;
+  title: string;
+  onClick: () => void;
+}
+
+const NavbarItem = ({ isActive, Icon, title, onClick }: NavbarItemProps) => (
   <div
     className="items-center justify-center flex flex-col py-2 px-1 cursor-pointer"
     {...{ onClick }}
@@ -23,11 +30,11 @@ const NavbarItem = ({ isActive, Icon, title, onClick }) => (
   </div>
 );
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
   const [active, setActive] = useState(1);
   return (
     <div className="flex flex-row fixed bottom-0 bg-white w-full sm:max-w-xl py-1 shadow-lg px-4 justify-around">
-      {bottomItems.map((item) => (
+      {bottomItems.map((item: BottomItems) => (
         <NavbarItem
           key={item.id}
           onClick={() => setActive(item.id)}

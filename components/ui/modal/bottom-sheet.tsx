@@ -2,7 +2,17 @@ import { BottomSheet } from "react-spring-bottom-sheet";
 import "react-spring-bottom-sheet/dist/style.css";
 import { ButtonPrimary } from "../button/button-primary";
 
-export const BottomSheetDone = ({ active, onDismiss, onConfirm }) => (
+interface BottomSheetDoneProps {
+  active: boolean;
+  onDismiss: () => void;
+  onConfirm: () => void;
+}
+
+export const BottomSheetDone = ({
+  active,
+  onDismiss,
+  onConfirm,
+}: BottomSheetDoneProps) => (
   <BottomSheet
     onDismiss={onDismiss}
     open={active}
@@ -21,7 +31,7 @@ export const BottomSheetDone = ({ active, onDismiss, onConfirm }) => (
         Anda berhasil menyelesaikan test sertifikasi Dasar pembiayaan
         Managerial. Silahkan cek score yang anda dapatkan
       </p>
-      <ButtonPrimary title="Cek Score" onClick={onConfirm} />
+      <ButtonPrimary type="button" title="Cek Score" onClick={onConfirm} />
       <div className="h-12" />
     </div>
   </BottomSheet>

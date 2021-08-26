@@ -8,7 +8,6 @@ export const Header = () => {
         <CalendarIcon />
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="prefix__ionicon"
           viewBox="0 0 512 512"
           className="h-5 w-5 ml-8"
         >

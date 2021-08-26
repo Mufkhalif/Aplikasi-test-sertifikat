@@ -1,4 +1,4 @@
-export const ProgressBar = () => (
+export const ProgressBar: React.FC = () => (
   <div>
     <div className="flex flex-row justify-between mb-2">
       <p className="text-xs text-secondaryDark font-normal">Progress</p>

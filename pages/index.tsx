@@ -5,7 +5,7 @@ import { ListTest } from "@/components/home/list-test";
 import { Content } from "@/components/ui/content";
 
 const Home = () => (
-  <Container>
+  <Container isBottom={true}>
     <Seo />
     <Header />
     <Content className="pt-24">

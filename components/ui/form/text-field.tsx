@@ -1,7 +1,20 @@
-import React, { forwardRef } from "react";
+import {
+  forwardRef,
+  ComponentPropsWithoutRef,
+  HtmlHTMLAttributes,
+} from "react";
 import { CheckIcon } from "../button/button-question";
 
-export const TextField = forwardRef(
+// export type InternalPageContentProps = ComponentPropsWithoutRef<HtmlHTMLAttributes>;
+
+interface InputTextProps extends React.InputHTMLAttributes<HTMLDivElement> {
+  isValid: boolean;
+  message: React.ReactNode;
+  label: string;
+  ref?: any;
+}
+
+export const TextField = forwardRef<HTMLDivElement, InputTextProps>(
   ({ message, label, placeholder, isValid, type, ...props }, ref) => {
     return (
       <div className="flex flex-col mb-4 relative">

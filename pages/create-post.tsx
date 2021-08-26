@@ -8,7 +8,7 @@ import { supabase } from "../utils/api";
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
-const initialState = { title: "", content: "" };
+const initialState = { title: "", content: "", id: "" };
 
 const CreatePost = () => {
   const [post, setPost] = useState(initialState);

@@ -19,7 +19,11 @@ export const ListQuestion = ({ listQuestion = [] }) => {
           listAnswer={item.list_answer.list_answer}
         />
       ))}
-      <ButtonPrimary title="Selesai" onClick={() => setOpen(true)} />
+      <ButtonPrimary
+        type="button"
+        title="Selesai"
+        onClick={() => setOpen(true)}
+      />
       <BottomSheetDone
         onDismiss={() => setOpen(false)}
         active={open}

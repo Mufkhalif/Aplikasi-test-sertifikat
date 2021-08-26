@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "utils/api";
 
-export const useSupabase = (table) => {
+export const useSupabase = (table: string) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 

@@ -1,7 +1,17 @@
 import { useState } from "react";
 import { ButtonQuestion } from "../button/button-question";
 
-export const CardQuestion = ({ title, listAnswer }) => {
+interface ListAnswerProps {
+  id: number;
+  label: string;
+}
+
+interface CardQuestionProps {
+  title: string;
+  listAnswer: ListAnswerProps[];
+}
+
+export const CardQuestion = ({ title, listAnswer }: CardQuestionProps) => {
   const [selected, setSelected] = useState(null);
 
   return (
@@ -10,7 +20,7 @@ export const CardQuestion = ({ title, listAnswer }) => {
         {title}
       </h2>
       <div className="mt-8">
-        {listAnswer.map((item, key) => (
+        {listAnswer.map((item, key: any) => (
           <ButtonQuestion
             isSelected={selected == item.id}
             title={item.label}

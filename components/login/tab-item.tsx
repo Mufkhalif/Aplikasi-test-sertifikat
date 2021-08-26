@@ -1,7 +1,11 @@
 import { Tab } from "@headlessui/react";
 import { classNames } from "utils";
 
-export const TabItem = ({ category, selected }) => (
+interface TabItemProps {
+  category: string;
+}
+
+export const TabItem = ({ category }: TabItemProps) => (
   <Tab
     key={category}
     className={({ selected }) =>

@@ -7,7 +7,11 @@ const onActiveIcon = (isActive = false) => {
   );
 };
 
-export const BookmarkIcon = ({ isActive }) => (
+interface IconProps {
+  isActive?: boolean;
+}
+
+export const BookmarkIcon = ({ isActive }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={onActiveIcon(isActive)}
@@ -18,7 +22,7 @@ export const BookmarkIcon = ({ isActive }) => (
   </svg>
 );
 
-export const HomeIcon = ({ isActive }) => (
+export const HomeIcon = ({ isActive }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={onActiveIcon(isActive)}
@@ -29,7 +33,7 @@ export const HomeIcon = ({ isActive }) => (
   </svg>
 );
 
-export const UserIcon = ({ isActive }) => (
+export const UserIcon = ({ isActive }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={onActiveIcon(isActive)}
@@ -44,7 +48,7 @@ export const UserIcon = ({ isActive }) => (
   </svg>
 );
 
-export const CalendarIcon = ({ isActive }) => (
+export const CalendarIcon = ({ isActive }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={onActiveIcon(isActive)}

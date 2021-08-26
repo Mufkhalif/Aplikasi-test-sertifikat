@@ -1,4 +1,4 @@
-import { TextField } from "../ui/form/text-field";
+import { TextField } from "@/components/ui/form/text-field";
 import { ReminderRow } from "./reminder-row";
 import { ButtonPrimary } from "../ui/button";
 import { useForm } from "react-hook-form";
@@ -74,7 +74,7 @@ export const FormSignin = () => {
         />
       </div>
       <ReminderRow />
-      <ButtonPrimary type="submit" title="Masuk" />
+      <ButtonPrimary type="submit" title="Masuk" onClick={() => null} />
     </form>
   );
 };
