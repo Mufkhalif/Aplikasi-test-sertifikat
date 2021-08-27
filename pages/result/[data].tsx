@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { useUser } from "utils/hooks/use-user";
 import { supabase } from "utils/api";
 import { useEffect, useState } from "react";
-import { Sekeleton } from "@/components/ui/loading/skeleton";
 import Lottie from "react-lottie";
 import loadingAnimation from "data/loading.json";
 
@@ -63,7 +62,7 @@ const Result = () => {
           <div>
             {result && (
               <div className="w-full h-screen text-center flex-col flex">
-                <h1 className="font-bold text-primaryDark text-base mt-28">
+                <h1 className="font-bold text-primaryDark text-base mt-14">
                   Hasil Kuis
                 </h1>
                 <img
@@ -88,9 +87,8 @@ const Result = () => {
                   onClick={() => null}
                   type="button"
                 />
-
                 <h3
-                  className="text-sm font-bold text-primaryBlue mt-8 cursor-pointer"
+                  className="text-xs font-bold text-primaryBlue mt-8 cursor-pointer"
                   onClick={() => router.push("/")}
                 >
                   Cari Kuis baru

@@ -5,7 +5,6 @@ import {
   UserIcon,
 } from "@/components/icon/bottom-navbar";
 import React from "react";
-
 export interface BottomItems {
   id: number;
   iconActive: React.ReactNode;

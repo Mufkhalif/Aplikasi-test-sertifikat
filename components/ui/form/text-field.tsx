@@ -1,12 +1,5 @@
-import {
-  forwardRef,
-  ComponentPropsWithoutRef,
-  HtmlHTMLAttributes,
-} from "react";
+import { forwardRef } from "react";
 import { CheckIcon } from "../button/button-question";
-
-// export type InternalPageContentProps = ComponentPropsWithoutRef<HtmlHTMLAttributes>;
-
 interface InputTextProps extends React.InputHTMLAttributes<HTMLDivElement> {
   isValid: boolean;
   message: React.ReactNode;
@@ -19,7 +12,6 @@ export const TextField = forwardRef<HTMLDivElement, InputTextProps>(
     return (
       <div className="flex flex-col mb-4 relative">
         <label className="text-primaryDark font-normal text-sm">{label}</label>
-
         <div className="flex flex-row relative items-center justify-center">
           <input
             type={type}

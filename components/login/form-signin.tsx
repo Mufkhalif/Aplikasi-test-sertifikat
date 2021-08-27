@@ -13,6 +13,11 @@ const ErrorText = ({ message }) => (
   <span className="text-sm text-red-500 mt-2">{message}</span>
 );
 
+export interface DataSigninProps {
+  email: string;
+  password: string;
+}
+
 export const FormSignin = () => {
   const {
     register,
@@ -24,7 +29,7 @@ export const FormSignin = () => {
 
   const router = useRouter();
 
-  const isValid = (name) => {
+  const isValid = (name: string) => {
     return (
       getValues()[name] != undefined &&
       errors[name] == undefined &&
@@ -32,7 +37,7 @@ export const FormSignin = () => {
     );
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: DataSigninProps) => {
     setLoading(true);
 
     let { user, error } = await supabase.auth.signIn({

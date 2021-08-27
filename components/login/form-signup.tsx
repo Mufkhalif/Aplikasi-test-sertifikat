@@ -1,9 +1,11 @@
 import { TextField } from "../ui/form/text-field";
 import { ButtonPrimary } from "../ui/button";
 import { useForm } from "react-hook-form";
-import React from "react";
+import React, { useState } from "react";
 import { supabase } from "utils/api";
 import { formOptionsSignup } from "./helper/validation-schema";
+import { DataSigninProps } from "./form-signin";
+import { useRouter } from "next/router";
 
 const ErrorText = ({ message }) => (
   <span className="text-sm text-red-500 mt-2">{message}</span>
@@ -16,8 +18,10 @@ export const FormSignup = () => {
     getValues,
     formState: { errors },
   } = useForm(formOptionsSignup);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const isValid = (name) => {
+  const isValid = (name: string) => {
     return (
       getValues()[name] != undefined &&
       errors[name] == undefined &&
@@ -25,46 +29,36 @@ export const FormSignup = () => {
     );
   };
 
-  const onSubmit = async (data) => {
-    let { user, error } = await supabase.auth.signUp({
+  const onSubmit = async (data: DataSigninProps) => {
+    setLoading(true);
+
+    let { error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
     });
 
-    console.log(user);
+    if (!error) {
+      setLoading(true);
+      router.push("/email-verification");
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col mt-2">
-        {/* <TextField
-          label="Nama Lengkap"
-          placeholder="isi nama disini"
-          name="name"
-          {...register("name")}
-          isValid={isValid("name")}
-          message={errors.name && <ErrorText message={errors.name.message} />}
-        /> */}
         <TextField
           label="Email"
-          placeholder="test@gamil.com"
+          placeholder="test@gmail.com"
           type="email"
           name="email"
           {...register("email")}
           isValid={isValid("email")}
           message={errors.email && <ErrorText message={errors.email.message} />}
         />
-        {/* <TextField
-          label="Nomor Handphone"
-          placeholder="0811111"
-          name="phone"
-          {...register("phone")}
-          isValid={isValid("phone")}
-          message={errors.phone && <ErrorText message={errors.phone.message} />}
-        /> */}
+
         <TextField
           label="Kata Sandi"
-          placeholder="Min 8 Karakter"
+          placeholder="Min 6 Karakter"
           type="password"
           name="password"
           {...register("password")}
@@ -76,7 +70,7 @@ export const FormSignup = () => {
 
         <TextField
           label="Ketik Ulang Kata sandi "
-          placeholder="Min 8 Karakter"
+          placeholder="Min 6 Karakter"
           type="password"
           name="confirmPassword"
           {...register("confirmPassword")}
@@ -89,6 +83,7 @@ export const FormSignup = () => {
         />
       </div>
       <ButtonPrimary
+        disabled={loading}
         type="submit"
         title="Daftar"
         className="mt-4"

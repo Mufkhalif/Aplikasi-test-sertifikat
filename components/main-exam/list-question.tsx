@@ -5,15 +5,25 @@ import { useState } from "react";
 import { BottomSheetDone } from "../ui/modal/bottom-sheet";
 import { ButtonPrimary } from "../ui/button/button-primary";
 import { useRouter } from "next/router";
-import { useUser } from "utils/hooks/use-user";
-import { supabase } from "utils/api";
+import { useQuestion } from "utils/hooks/use-question";
 
 export const ListQuestion = ({ listQuestion = [], id }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState([]);
   const router = useRouter();
-  const { user } = useUser();
   const [loading, setLoading] = useState(false);
+  const { onSubmit } = useQuestion({
+    point: selected.filter((item) => item.isCorrect).length,
+    countExam: listQuestion.length,
+    idRoom: id,
+    onLoading: () => {
+      setLoading(true);
+    },
+    onSuccess: () => {
+      setOpen(true);
+      setLoading(false);
+    },
+  });
 
   const onSelected = ({ answer, item, key }) => {
     const beforeSelected = [...selected];
@@ -30,42 +40,9 @@ export const ListQuestion = ({ listQuestion = [], id }) => {
     setSelected(beforeSelected);
   };
 
-  const onSubmit = async () => {
-    setLoading(true);
-
-    const { data: result_quiz } = await supabase
-      .from("result_quiz")
-      .select("*")
-      .eq("user_id", user.id)
-      .eq("id_room_question", id);
-
-    if (result_quiz.length == 0) {
-      const { data } = await supabase
-        .from("result_quiz")
-        .insert([
-          {
-            user_id: user.id,
-            point: selected.filter((item) => item.isCorrect).length,
-            count_exam: listQuestion.length,
-            id_room_question: id,
-          },
-        ])
-        .single();
-      setOpen(true);
-      setLoading(false);
-    } else {
-      const { data } = await supabase
-        .from("result_quiz")
-        .update({
-          point: selected.filter((item) => item.isCorrect).length,
-          count_exam: listQuestion.length,
-        })
-        .eq("user_id", user.id)
-        .eq("id_room_question", id);
-
-      setOpen(true);
-      setLoading(false);
-    }
+  const onConfirm = () => {
+    setOpen(false);
+    router.push(`/result/${id}`);
   };
 
   return (
@@ -92,14 +69,8 @@ export const ListQuestion = ({ listQuestion = [], id }) => {
       />
       <BottomSheetDone
         active={open}
-        onDismiss={() => {
-          setOpen(false);
-          router.push(`/result/${id}`);
-        }}
-        onConfirm={() => {
-          setOpen(false);
-          router.push(`/result/${id}`);
-        }}
+        onDismiss={onConfirm}
+        onConfirm={onConfirm}
       />
     </div>
   );
