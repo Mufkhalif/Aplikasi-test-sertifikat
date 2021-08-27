@@ -1,11 +1,11 @@
 import Calendar from "react-calendar";
 import React, { useState } from "react";
 import clsx from "clsx";
-import { Transition } from "@headlessui/react";
+import { TransitionWrapper } from "../container-animation/transition-wrapper";
 
 export const Header = () => {
   const [value, onChange] = useState(new Date());
-  const [openCalendar, setOpenCalendar] = useState<boolean>(false);
+  const [openCalendar, setOpenCalendar] = useState<false | true>(false);
 
   return (
     <div className="fixed w-full  shadow-sm z-10 sm:max-w-xl">
@@ -21,14 +21,9 @@ export const Header = () => {
           <SearchIcon />
         </div>
       </div>
-      <Transition
+      <TransitionWrapper
         show={openCalendar}
-        enter="transition-opacity duration-75"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
+        onDismiss={() => setOpenCalendar(false)}
       >
         <Calendar
           value={value}
@@ -37,11 +32,7 @@ export const Header = () => {
             setOpenCalendar(false);
           }}
         />
-        <div
-          className="w-full h-full absolute  z-2 sm:max-w-xl sm:max-h-xl"
-          onClick={() => setOpenCalendar(false)}
-        ></div>
-      </Transition>
+      </TransitionWrapper>
     </div>
   );
 };

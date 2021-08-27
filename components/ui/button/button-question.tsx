@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { TransitionWrapper } from "../container-animation/transition-wrapper";
 
 export const ButtonQuestion = ({ title, isSelected, keyItem, onClick }) => (
   <button
@@ -23,7 +24,9 @@ export const ButtonQuestion = ({ title, isSelected, keyItem, onClick }) => (
       </div>
       <h2 className="font-bold text-xs text-primaryDark ml-1">{title}</h2>
     </div>
-    {isSelected && <CheckIcon />}
+    <TransitionWrapper show={isSelected} onDismiss={() => null}>
+      <CheckIcon />
+    </TransitionWrapper>
   </button>
 );
 

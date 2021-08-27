@@ -8,7 +8,7 @@ import ListQuestion from "@/components/main-exam/list-question";
 import { Sekeleton } from "@/components/ui/loading/skeleton";
 import { EmptyData } from "@/components/ui/empty-data";
 
-const DetailRoom = ({ data }) => {
+const DetailRoom = ({ data, id }) => {
   const router = useRouter();
 
   return (
@@ -21,7 +21,7 @@ const DetailRoom = ({ data }) => {
         ) : data.length == 0 ? (
           <EmptyData />
         ) : (
-          <ListQuestion listQuestion={data} />
+          <ListQuestion listQuestion={data} id={id} />
         )}
       </Content>
     </Container>
@@ -51,6 +51,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data,
+      id,
     },
   };
 }

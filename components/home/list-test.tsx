@@ -5,8 +5,6 @@ import { useState } from "react";
 import { ModalConfirm } from "../ui/modal/modal-confirm";
 import { useRouter } from "next/router";
 import { ListChapterTest } from "utils/hooks/use-supabase";
-import { useEffect } from "react";
-import { supabase } from "utils/api";
 
 export const ListTest = () => {
   const { data, loading } = useSupabase("room_question");
